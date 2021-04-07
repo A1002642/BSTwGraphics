@@ -1,0 +1,198 @@
+public class BinarySearchTree {
+	//creates BST and Sets Root to null
+	private BinaryNode root;
+	private int leaves;
+	public BinarySearchTree() {
+		root= null;
+	}
+	public BinaryNode getRoot() {
+		return root;
+	}
+	//Add method
+	public void add(BinaryNode x) {
+		if( root == null) {
+			root = x;
+			return;
+		}
+		add(root, x);
+	}
+	
+	private void add(BinaryNode parent, BinaryNode x) {
+		if(parent == null)
+			return;
+		if(x.getValue().compareTo(parent.getValue()) < 0)
+			if(parent.left()==null){
+				parent.setLeft(x);
+			}
+			else{
+				add(parent.left(), x);
+				}
+		if(x.getValue().compareTo(parent.getValue()) > 0)
+			if(parent.right()==null){
+				parent.setRight(x);
+			}
+			else{
+				add(parent.right(), x);
+				}
+	}
+	// returns number of leafs in tree
+	 public int getNumLeaves()  { 
+		 return getNumLeaves(root); 
+		 } 
+	    int getNumLeaves(BinaryNode x)  { 
+	    	if (x == null) 
+	            return 0; 
+	    	if (x.left() == null && x.right() == null) 
+	            return 1; 
+	        else
+	            return getNumLeaves(x.left()) + getNumLeaves(x.right()); 
+	    } 
+	    
+	    //RETURNS # LEVELS
+	    
+	 // RETURNS WIDTH OF TREE
+	   public int getMaxWidth(BinaryNode node) 
+	    { 
+	        int maxWidth = 0; 
+	        int width; 
+	        int h = getHeight(node); 
+	        int i; 
+	        for (i = 1; i <= h; i++) { 
+	            width = getWidth(node, i); 
+	            if (width > maxWidth) 
+	                maxWidth = width; 
+	        } 
+	  
+	        return maxWidth; 
+	    } 
+	   //RETURNS THE WIDTH OF SPECIFIC NODE
+	    public int getWidth(BinaryNode node, int level) 
+	    { 
+	        if (node == null) 
+	            return 0; 
+	  
+	        if (level == 1) 
+	            return 1; 
+	        else if (level > 1) 
+	            return getWidth(node.left(), level - 1) 
+	                + getWidth(node.right(), level - 1); 
+	        return 0; 
+	    } 
+	    
+	    //RETURNS HEIGHT OF TREE
+	    public int getHeight(BinaryNode node) 
+	    { 
+	        if (node == null) 
+	            return 0; 
+	        else { 
+	            /* compute the height of each subtree */
+	            int lHeight = getHeight(node.left()); 
+	            int rHeight = getHeight(node.right()); 
+	            return (lHeight > rHeight) ? (lHeight + 1) 
+	                                       : (rHeight + 1); 
+	        } 
+	    } 
+	    
+	    // IS FULL METHOD
+	    public boolean isFullTree(BinaryNode node) 
+	    { 
+	        // if empty tree 
+	        if(node == null) 
+	        return true; 
+	           
+	        // if leaf node 
+	        if(node.left() == null && node.right() == null ) 
+	            return true; 
+	           
+	        // if both left and right subtrees are not null 
+	        // the are full 
+	        if((node.left()!=null) && (node.right()!=null)) 
+	            return (isFullTree(node.left()) && isFullTree(node.right())); 
+	        // if none work 
+	        return false; 
+	    } 
+	    
+	    public int getNumNodes(BinaryNode root){
+	        if(root==null)
+	            return 0;
+	        return 1 + getNumNodes(root.left()) + getNumNodes(root.right());
+	    }
+	    public static boolean contains( BinaryNode node, Comparable key) 
+	    { 
+	        if (node == null) 
+	            return false; 
+	     
+	        if (node.getValue() == key) 
+	            return true; 
+	     
+	        // then recur on left subtree /
+	        boolean res1 = contains(node.left(), key); 
+	       
+	        // node found, no need to look further
+	        if(res1) return true; 
+	     
+	        // node is not found in left, 
+	        // so recur on right subtree /
+	        boolean res2 = contains(node.right(), key); 
+	     
+	        return res2; 
+	    } 
+	    
+	//PRE ORDER TRAVERSAL
+	public String preOrder(){
+		return preOrder(root).trim();
+		}
+	private String preOrder(BinaryNode k){
+		String temp = "";
+		if(k != null){
+			// use value
+			temp += k.getValue()+ " ";
+			// go left
+			temp += preOrder(k.left());
+			// go right
+			temp += preOrder(k.right());
+			}
+		return temp;
+	}
+	// POST ORDER TRAVERSAL
+	public void postOrder(BinaryNode node)
+	    { 
+	        if (node == null) 
+	            return; 
+	        // first recur on left subtree 
+	        postOrder(node.left()); 
+	  
+	        // then recur on right subtree 
+	        postOrder(node.right()); 
+	  
+	        // now deal with the node 
+	        System.out.print(node.getValue() + " "); 
+	    } 
+	
+	public void inOrder(BinaryNode node) 
+    { 
+        if (node == null) 
+            return; 
+  
+        /* first recur on left child */
+        inOrder(node.left()); 
+  
+        /* then print the data of node */
+        System.out.print(node.getValue() + " "); 
+  
+        /* now recur on right child */
+        inOrder(node.right()); 
+    } 
+	public void reverseOrder(BinaryNode node) 
+    { 
+        if (node == null) 
+            return; 
+  
+        reverseOrder(node.right()); 
+  
+        /* then print the data of node */
+        System.out.print(node.getValue() + " "); 
+  
+        reverseOrder(node.left()); 
+    } 
+}
