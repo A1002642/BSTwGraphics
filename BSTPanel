@@ -1,0 +1,10 @@
+import java.awt.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import static java.lang.System.*;
+
+public class BSTPanel extends JPanel{
+
+}
