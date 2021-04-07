@@ -2,6 +2,6 @@
 public class BinarySearchTreeDriver {
 
 	public static void main(String[] args) {
-		
+		 BSTFrame c = new BSTFrame("Graphic Binary Tree");
 	}
 }
