@@ -1,10 +1,29 @@
 import java.awt.*;
+import javax.swing.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
-import javax.swing.*;
-
-import static java.lang.System.*;
+import java.io.*;
 
 public class BSTPanel extends JPanel{
-
+	//private BufferedImage Aatrox, Harold, Gragas, Rammus, Xerath;
+	
+	public GraphPanel() {
+		try {
+			//Aatrox = ImageIO.read(GraphPanel.class.getResource("/Image/Aatrox.jpg"));
+			//Harold = ImageIO.read(GraphPanel.class.getResource("/Image/dinosar.jpg"));
+			//Gragas = ImageIO.read(GraphPanel.class.getResource("/Image/Gragas.jpg"));
+			//Rammus = ImageIO.read(GraphPanel.class.getResource("/Image/Rammus.jpg"));
+			//Xerath = ImageIO.read(GraphPanel.class.getResource("/Image/Xerath.jpg"));
+		}
+		catch(Exception E) {
+			System.out.println("Exception Error");
+			return;
+		}
+	}
+public void paint (Graphics g) {
+	//g.drawImage(Aatrox, 0, 0, 600, 600, null);
+	//g.drawImage(Harold, 601, 0, 600, 600, null);
+	//g.drawImage(Aatrox, 0, 0, 600, 600, null);
+	//g.drawImage(Aatrox, 0, 0, 600, 600, null);
+}
 }
