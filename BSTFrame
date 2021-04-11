@@ -1,28 +1,15 @@
-import javax.swing.*;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import static java.lang.System.*;
+import javax.swing.*;
 
-public class BSTFrame extends JFrame implements MouseListener, KeyListener{
-    public static int WIDTH = 1920;
-    public static int HEIGHT = 1044;
-    public BSTPanel p = new BSTPanel();
-    public CarcassonneFrame(String name){
-        super(name);
-        //JScrollPane scroll = new JScrollPane(p);  
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(WIDTH, HEIGHT);
-        setResizable(false);
-        //add(scroll);
-        add(p);
-        setVisible(true);
-        addMouseListener(this);
-        addKeyListener(this);
-    }
-    public void mousePressed(MouseEvent e){
-
-    }
+public class Graphic extends JFrame{
+	private static final int WIDTH = 1200;
+	private static final int HEIGHT = 1200;
+	
+	public Graphic(String frameName) {
+		super(frameName);
+		setSize(WIDTH, HEIGHT);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setVisible (true);
+	}
+}
